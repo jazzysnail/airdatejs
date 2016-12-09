@@ -1,2 +1,3 @@
 # airdatejs
-javascript
+
+a simple and beautiful datepicker.
