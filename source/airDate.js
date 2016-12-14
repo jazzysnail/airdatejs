@@ -6,17 +6,24 @@
  */
 ((win) => {
 
-  let Airdate = new Object();
-  Airdate.v = 'v1.0.0';
+  function Airdate () {
+    let Air = this;
+    Air.v = 'v1.0.0';
+  }
 
   win.Airdate = Airdate;
 
+  const $ = function (ele) {
+    return document.querySelector(ele)
+  };
+
   const config = {
-    theme  : 'default',
     format : 'YYYY-MM-DD',
-    min: '',
-    max: ''
-  }
+    unit   : 'sec',  // ['day','hours','min','sec','ke','zi']
+    min    : '1900-01-01 00:00:00',
+    max    : '2099-12-31 23:59:59',
+    theme  : 'default'
+  };
 
 
 
@@ -85,4 +92,45 @@
       }
     }
   };
+
+
+
+  /*
+   * css属性操作
+   * css handle
+  */
+  const _style = {
+    /*
+     * 清除class属性
+     * @param {String || Number} index
+    */
+    remove(elem, attr) {
+      var s = elem.style;
+      if(s.removeProperty){
+          s.removeProperty(attr);
+      } else {
+          s.removeAttribute(attr);
+      }
+    },
+  };
+
+
+  /*
+   * 日期操作
+   * date handle
+  */
+  const _date = {
+
+  };
+  console.log(document.getElementsByClassName('body'));
+  _class.add(document.getElementsByClassName('body'),'hehe');
+
+
+
+
+
+
+
+
+
 })(window)
