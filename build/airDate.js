@@ -1,9 +1,92 @@
 'use strict';
+/*!
+ * Airdate v1.0.0
+ * (c) 2016-2016 jazzysnail
+ * Released under the MIT License.
+ */
 
-var _utls = require('_utls');
+(function (win) {
+  var Airdate = new Object();
+  Airdate.v = 'v1.0.0';
 
-var utl = _interopRequireWildcard(_utls);
+  var config = {
+    theme: 'default',
+    format: 'YYYY-MM-DD',
+    min: '',
+    max: ''
+  };
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+  win.Airdate = Airdate;
+  // 基础方法对象
+  var _utl = {
+    /*
+     * 修饰字符
+     * @param {String} str
+    */
+    trim: function trim(str) {
+      str = str || '';
+      return str.replace(/^\s|\s$/g, '').replace(/\s+/g, ' ');
+    }
+  };
 
-console.log(utl.removeArrEl);
+  /*
+   * 类名操作
+   * className handle
+  */
+  var _class = {
+    /*
+     * 添加
+     * @param {String || Number} index
+    */
+    add: function add(ele, cls) {
+      ele = ele || {};
+      this.has(ele, cls) || (ele.className += ' ' + cls);
+      ele.className = _utl.trim(ele.className);
+      return this;
+    },
+
+    /*
+     * 判断是否存在
+     * @param {String || Number} index
+    */
+    has: function has(ele, cls) {
+      ele = ele || {};
+      return new RegExp('\\b' + cls + '\\b').test(ele.className);
+    },
+
+    /*
+     * 删除
+     * @param {String || Number} index
+    */
+    remove: function remove(ele, cls) {
+      ele = ele || {};
+      if (this.has(ele, cls)) {
+        var reg = new RegExp('\\b' + cls + '\\b');
+        ele.className = ele.className.replace(reg, '');
+      }
+      return this;
+    },
+
+    /*
+     * 切换 (找到切换，未找到新增)
+     * toggle (if found swap, else add)
+     * @param {object} ele
+     * @param {String} nVal
+     * @param {String} oVal
+    */
+    toggle: function toggle(ele, nVal, oVal) {
+      var c = ele.className;
+      if (c != null && c.indexOf(oVal) > -1) {
+        this.remove(ele, oVal);
+        this.add(ele, nVal);
+      } else {
+        this.add(ele, nVal);
+      }
+    }
+  };
+
+  _class.add(document.getElementById('body'), 'aaa');
+  _class.toggle(document.getElementById('body'), 'bbb', 'aa');
+  _class.remove(document.getElementById('body'), 'bbb');
+  // console.log(_class.has(document.getElementById('body'),'aaa'))
+})(window);
