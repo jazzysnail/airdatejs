@@ -18,32 +18,29 @@ import {_utl, _class, _style} from './lib';
 
   // Constructor
   function Airdate (opt = {}) {
-    let Air = this;
-    Air.v = 'v1.0.0';
-    if (typeof opt.theme == 'String') {
-      // use theme
-      // _utl.use();
+    try {
+      let Air = this;
+      Air.v = 'v1.0.0';
+      if (typeof opt.theme == 'String') {
+        // use theme
+        // _utl.use();
+      }
+    } catch (e) {
+      console.error("Use the 'new' keyword to instantiate an Airdate object!");
     }
   }
-
-
 
   const $ = function (ele) {
     return document.querySelector(ele)
   };
 
-
   /*
    * 日期操作
-   * date handle
+   * datepick handle
   */
   const _date = {
 
   };
-  // console.log(document.getElementsByClassName('body'));
-  // _class.add(document.getElementsByClassName('body'),'hehe');
-
-
 
   global.Airdate = Airdate;
 
