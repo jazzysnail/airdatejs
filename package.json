@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "jazzysnail",
   "description": "a simple and beautiful datepicker",
-  "main": "gulpfile.babel.js",
+  "main": "dist/Airdate.js",
   "scripts": {
     "start": "webpack --config ./scripts/webpack.dev.config.js",
     "build": "webpack -p --config ./scripts/webpack.config.js",
