@@ -1,5 +1,4 @@
-import _utl from '../_utl'
-
+import {trim} from '../_utl'
 /*
  * 类名操作
  * className handle
@@ -12,7 +11,7 @@ const _class = {
   add(ele, cls) {
     ele = ele || {};
     this.has(ele, cls) || (ele.className += ' ' + cls);
-    ele.className = _utl.trim(ele.className);
+    ele.className = trim(ele.className);
     return this;
   },
   /*
